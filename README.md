@@ -16,9 +16,11 @@
 - Create venv: `python -m venv venv`
 - Activate it: `source venv/bin/activate`
 - Install requirements: `pip install -r requirements.txt`
+- Create new Postgres DB & User
+- Copy .env.sample to .env and populate 
 - Run migrations: `python manage.py migrate`
 - Run Redis server: `docker run -d -p 6379:6379 redis`
-- Run Celery Worker for task handling: `celery -A rick_and_morty_api worker -l INFO`
+- Run Celery Worker for task handling: ` celery -A rick_and_morty_api worker --pool=solo --loglevel=info`
 - Run Celery Beat for task scheduling: `celery -A rick_and_morty_api beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler`
 - Create schedule for running sync in BD
 - Run server: `python manage.py runserver`
